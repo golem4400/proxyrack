@@ -46,6 +46,9 @@ check_operating_system() {
   elif [[ "$SYS" =~ [Aa]lpine ]]; then
     PACKAGE_UPDATE="apk update"
     PACKAGE_INSTALL="apk add"
+  elif [[ "$SYS" =~ [Gg][Nn][Uu]/[Ll]inux|[Aa]rch|[Mm]anjaro ]]; then
+    PACKAGE_UPDATE="pacman -Syu --noconfirm"
+    PACKAGE_INSTALL="pacman -S --noconfirm"
   else
     red "Unsupported operating system: $SYS"
     exit 1
